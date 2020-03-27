@@ -1,0 +1,22 @@
+{
+  "name": "@jrg/koa-sass",
+  "version": "0.0.1",
+  "description": "Simple Project to provide Dart Sass support to my Koa apps",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrgleason/koa-dart-sass.git"
+  },
+  "keywords": [
+    "sass"
+  ],
+  "author": "Jackie Gleason",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jrgleason/koa-dart-sass/issues"
+  },
+  "homepage": "https://github.com/jrgleason/koa-dart-sass#readme"
+}
