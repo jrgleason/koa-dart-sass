@@ -1,8 +1,11 @@
 import { execSync } from 'child_process';
 import commandExists from 'command-exists-promise';
+import path from 'path';
+
+
 
 async function checkDart(){
-    return await commandExists('dart');
+    return await commandExists('sass');
 }
 
 class KoaSass{
@@ -12,15 +15,21 @@ class KoaSass{
         }
         this.loadPath = this.loadPath || "node_modules"
         // TODO: Check for dart-sass fallback to node-sass
-        checkDart().then(exists=> exists ? null : throw new Error("Dart not found!!!!"))
+        checkDart().then(exists=> {
+            if(!exists){
+                console.error("Dart not found!!!!");
+                process.exit();
+            }
+        })
     }
 
     onRequest(ctx, next){
         if(ctx.path.endsWith('.scss')){
             // TODO render as scss
             console.log("The file is scss");
+            console.log(` the context is ${JSON.stringify(ctx.originalUrl)}`)
             // TODO: rootPath?
-            ctx.body = this.render(ctx.path);
+            ctx.body = this.render(ctx.originalUrl);
         } else if (ctx.path.endsWith('.sass')){
             // TODO: render as sass
             console.log("This file is sass");
@@ -31,14 +40,17 @@ class KoaSass{
         }
     }
 
-    render(path){
-        if(!id.endsWith('.scss')) return null;
-        const a = execSync(`sass ${path} --load-path=${this.loadPath}`);
+    render(location){
+        if(!location.endsWith('.scss')) return null;
+        if(this.prefix) location += `/${this.prefix}`
+        if(!this.absolute){
+            location = `.${location}`;
+        }
+        console.log(`The path for the sass file is ${location}`);
+        const a = execSync(`sass ${location} --load-path=${this.loadPath}`);
         // TODO: Handle all encodings
         // TODO: Add source Map
-        return {
-            code: `export default \`${a.toString('utf8')}\``
-        }
+        return a.toString('utf8');
     }
 
     get koaMiddleware(){
