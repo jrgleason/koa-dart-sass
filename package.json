@@ -1,6 +1,6 @@
 {
   "name": "@jrg/koa-sass",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Simple Project to provide Dart Sass support to my Koa apps",
   "main": "index.mjs",
   "repository": {
