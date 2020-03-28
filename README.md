@@ -42,3 +42,8 @@ The basic example is...
 
        link(rel="stylesheet" type="text/css" href="/styles/test.scss")     
 
+# Issues
+
+1. Still working on an implementation to allow sass files
+1. Add ability to fallback to node-sass
+1. Add additional configuration params

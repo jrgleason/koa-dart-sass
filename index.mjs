@@ -42,11 +42,11 @@ class KoaSass{
 
     render(location){
         if(!location.endsWith('.scss')) return null;
-        if(this.prefix) location += `/${this.prefix}`
+        if(this.prefix) location = `/${this.prefix}${location}`
         if(!this.absolute){
-            location = `.${location}`;
+            location = `${process.cwd()}${location}`;
         }
-        console.log(`The path for the sass file is ${location}`);
+        console.log(`The path for the sass file is ${location}\n Current Directory is ${process.cwd()}`);
         const a = execSync(`sass ${location} --load-path=${this.loadPath}`);
         // TODO: Handle all encodings
         // TODO: Add source Map
