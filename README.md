@@ -15,9 +15,10 @@ The basic example is...
 
 3. Create a simple SCSS `vi ./styles/test.scss` and add the following...
 
-       .test{
-         height: 100%
-       }       
+       $base-color: red;
+       h1{
+           background-color:$base-color; 
+       }     
 
 2. Create the following class in a server**.mjs**
 

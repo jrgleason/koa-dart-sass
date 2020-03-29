@@ -1,11 +1,14 @@
 {
   "name": "@jrg/koa-sass",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Simple Project to provide Dart Sass support to my Koa apps",
   "main": "index.mjs",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jrgleason/koa-dart-sass.git"
+  },
+  "scripts": {
+    "lint": "eslint index.mjs test --fix --ext mjs"
   },
   "keywords": [
     "sass"
@@ -18,5 +21,9 @@
   "homepage": "https://github.com/jrgleason/koa-dart-sass#readme",
   "dependencies": {
     "command-exists-promise": "latest"
+  },
+  "devDependencies": {
+    "eslint": "latest",
+    "eslint-config-google": "latest"
   }
 }
